@@ -1,0 +1,23 @@
+// This file was automatically generated from template.soy.
+// Please don't edit this file by hand.
+
+goog.provide('Bird.soy');
+
+goog.require('soy');
+goog.require('soydata');
+goog.require('BlocklyGames.soy');
+
+
+Bird.soy.messages = function(opt_data, opt_ignored, opt_ijData) {
+  return BlocklyGames.soy.messages(null, null, opt_ijData) + '<div style="display: none"><span id="Bird_noWorm">nemá červa</span><span id="Bird_heading">smer</span><span id="Bird_noWormTooltip">Podmienka ak ešte vták nechytil červa.</span><span id="Bird_headingTooltip">Pohybuj sa v smere uhla. 0 je vpravo, \\n90 je nahor atď. </span><span id="Bird_positionTooltip">x a y označujú pozíciu vtáka. Keď x = 0, \\nvták je blízko ľavého okraja, keď x = 100, \\nje blízko pravého okraja. Keď y = 100, je \\nnavrchu. </span></div>';
+};
+
+
+Bird.soy.start = function(opt_data, opt_ignored, opt_ijData) {
+  return Bird.soy.messages(null, null, opt_ijData) + '<table width="100%"><tr><td><h1>' + BlocklyGames.soy.titleSpan({appName: 'Vták'}, null, opt_ijData) + BlocklyGames.soy.levelLinks({level: opt_ijData.level, maxLevel: opt_ijData.maxLevel, lang: opt_ijData.lang, suffix: ''}, null, opt_ijData) + '</h1></td><td class="farSide"><select id="languageMenu"></select>&nbsp;<button id="linkButton" title="Uložiť a zdieľať odkaz na tento program."><img src="media/1x1.gif" class="link icon21"></button></td></tr></table><div id="visualization"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="svgBird" width="400px" height="400px"></svg></div><table width="400"><tr><td style="width: 190px;"></td><td><button id="runButton" class="primary" title="Spustiť napísaný program."><img src="media/1x1.gif" class="run icon21"> Spustiť</button><button id="resetButton" class="primary" style="display: none" title="Zastaviť program a vrátiť úroveň do pôvodného \\nstavu. "><img src="media/1x1.gif" class="stop icon21"> Odznova</button></td></tr></table>' + Bird.soy.toolbox(null, null, opt_ijData) + '<div id="blockly"></div>' + BlocklyGames.soy.dialog(null, null, opt_ijData) + BlocklyGames.soy.doneDialog(null, null, opt_ijData) + BlocklyGames.soy.abortDialog(null, null, opt_ijData) + BlocklyGames.soy.storageDialog(null, null, opt_ijData) + '<div id="dialogHelp" class="dialogHiddenContent">' + ((opt_ijData.level == 1) ? '<table><tr><td rowspan=2><img src="common/help.png"></td><td><div class="farSide"><img src="bird/help_heading.png" class="mirrorImg" height=27 width=141></div></td></tr><tr><td>Zmeň smer vtáka tak, aby chytil červa a pristál v hniezde.</td></tr></table>' : (opt_ijData.level == 2) ? '<table><tr><td><img src="common/help.png"></td><td>Použi tento blok na pohyb jedným smerom, ak máš červa, alebo iným smerom, ak ho nemáš.</td><td><img src="bird/help_up.png"></td></tr></table>' : (opt_ijData.level == 4) ? '<table><tr><td><img src="common/help.png"></td><td>\'x\' je tvoja momentálna vodorovná pozícia. Použi blok na pohyb jedným smerom, ak \'x\' je menej ako číslo, alebo iným smerom, ak je to inak.</td><td><img src="bird/help_up.png"></td></tr></table>' : (opt_ijData.level == 5) ? '<table><tr><td><img src="bird/help_up.png"></td><td>Klikni na inkonku a zmeň blok \'ak\'.</td><td><img src="common/help.png"></td></tr></table>' : (opt_ijData.level == 6) ? '<table><tr><td><img src="bird/help_up.png"></td><td>V tejto úrovni sú potrebné bloky \'inak ak\' aj \'inak\'.</td><td><img src="common/help.png"></td></tr></table>' : (opt_ijData.level == 8) ? '<table><tr><td><img src="bird/help_up.png"></td><td>Blok \'a\' je pravda len ak oba jeho vstupy sú pravdivé.</td><td><img src="common/help.png"></td></tr></table>' : '') + '</div>' + ((opt_ijData.level == 5) ? '<div id="dialogMutatorHelp" class="dialogHiddenContent"><table><tr><td><img src="bird/help_mutator.png" class="mirrorImg" height=58 width=107></td><td>Potiahni blok \'inak\' dovnútra bloku \'ak\'.</td></tr></table></div>' : '');
+};
+
+
+Bird.soy.toolbox = function(opt_data, opt_ignored, opt_ijData) {
+  return '<xml id="toolbox" style="display: none;"><block type="bird_heading"></block>' + ((opt_ijData.level >= 2) ? '<block type="bird_noWorm"></block>' + ((opt_ijData.level >= 4) ? '<block type="bird_compare"><field name="OP">LT</field><value name="A"><block type="bird_position"><field name="XY">X</field></block></value><value name="B"><block type="math_number"><field name="NUM">50</field></block></value></block>' + ((opt_ijData.level >= 5) ? '<block type="bird_compare"><field name="OP">LT</field><value name="A"><block type="bird_position"><field name="XY">Y</field></block></value><value name="B"><block type="math_number"><field name="NUM">50</field></block></value></block>' + ((opt_ijData.level >= 8) ? '<block type="bird_and"></block>' : '') : '') : '') : '') + '</xml>';
+};
